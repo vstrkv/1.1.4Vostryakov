@@ -16,11 +16,6 @@ public class UserDaoHibernateImpl implements UserDao {
 
     }
 
-    /*String sql = "create table IF NOT EXISTS userTable" +
-                "(id BIGINT primary key auto_increment, " +
-                "name varchar(100), " +
-                "lastname varchar(100), " +
-                "age tinyint);";*/
     @Override
     public void createUsersTable() {
         Session session = sessionFactory.openSession();
@@ -33,15 +28,12 @@ public class UserDaoHibernateImpl implements UserDao {
                     "age tinyint);").executeUpdate();
             tx1.commit();
         } catch (HibernateException e) {
-            //  System.out.println("ошибка в createUsersTable");
-            //e.printStackTrace();
             tx1.rollback();
         } finally {
             session.close();
         }
     }
 
-    //String sql = "drop table IF EXISTS userTable;";
     @Override
     public void dropUsersTable() {
         Session session = sessionFactory.openSession();
@@ -81,7 +73,6 @@ public class UserDaoHibernateImpl implements UserDao {
             session.delete(user);
             tx1.commit();
         } catch (HibernateException e) {
-            //System.out.println("ошибка в removeUserById");
             tx1.rollback();
         } finally {
             session.close();
@@ -98,7 +89,6 @@ public class UserDaoHibernateImpl implements UserDao {
             tx1.commit();
         } catch (HibernateException e) {
             tx1.rollback();
-            // System.out.println("СНОВА ЧТО-ТО НЕ ТАК В getAllUsers() ");
         } finally {
             session.close();
         }
