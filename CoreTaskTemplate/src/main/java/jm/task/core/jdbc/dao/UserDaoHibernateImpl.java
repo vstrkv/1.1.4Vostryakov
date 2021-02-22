@@ -105,25 +105,6 @@ public class UserDaoHibernateImpl implements UserDao {
         return users;
     }
 
-    /*    public List<User> getAllUsers() {
-        List<User> users = new ArrayList<>();
-        String sql = "SELECT id,name,lastname,age from userTable";
-        try (Statement statement = SQL_connection.createStatement()) {
-            ResultSet resultSet = statement.executeQuery(sql);
-            while (resultSet.next()) {
-                User user = new User();
-                user.setId(      resultSet.getLong("id"));
-                user.setName(    resultSet.getString("name"));
-                user.setLastName(resultSet.getString("lastname"));
-                user.setAge(     resultSet.getByte("age"));
-                users.add(user);
-            }
-        } catch (SQLException e) {
-            e.printStackTrace();
-        }
-        return users;
-
-    }*/
 
     @Override
     public void cleanUsersTable() {
